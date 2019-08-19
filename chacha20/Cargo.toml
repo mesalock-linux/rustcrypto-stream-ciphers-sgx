@@ -16,15 +16,15 @@ readme = "README.md"
 travis-ci = { repository = "RustCrypto/stream-ciphers" }
 
 [dependencies]
-byteorder = { version = "1", default-features = false }
-stream-cipher = "0.3"
+byteorder = { git = "https://github.com/mesalock-linux/byteorder-sgx" }
+stream-cipher = { git = "https://github.com/mesalock-linux/rustcrypto-traits-sgx" }
 salsa20-core = { version = "0.2", path = "../salsa20-core" }
 rand_core = { version = "0.5", optional = true }
 
 [dev-dependencies]
-stream-cipher = { version = "0.3", features = ["dev"] }
-criterion = "0.3"
-criterion-cycles-per-byte = "0.1"
+#stream-cipher = { version = "0.3", features = ["dev"] }
+#criterion = "0.3"
+#criterion-cycles-per-byte = "0.1"
 
 [features]
 default = ["xchacha20"]

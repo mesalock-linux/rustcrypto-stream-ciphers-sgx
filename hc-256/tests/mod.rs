@@ -1,22 +1,24 @@
-extern crate hc_256;
-extern crate block_cipher_trait;
-extern crate stream_cipher;
+//extern crate hc_256;
+//extern crate block_cipher_trait;
+//extern crate stream_cipher;
+
+use std::prelude::v1::*;
 
 use block_cipher_trait::generic_array::GenericArray;
 use hc_256::HC256;
 use stream_cipher::NewStreamCipher;
 use stream_cipher::StreamCipher;
 
-#[cfg(test)]
+//#[cfg(test)]
 const KEY_BYTES: usize = 256 / 8;
 
-#[cfg(test)]
+//#[cfg(test)]
 const IV_BYTES: usize = 256 / 8;
 
-#[cfg(test)]
+//#[cfg(test)]
 const PAPER_KEY0: [u8; KEY_BYTES] = [0; KEY_BYTES];
 
-#[cfg(test)]
+//#[cfg(test)]
 const PAPER_KEY1: [u8; KEY_BYTES] = [0x55, 0, 0, 0,
                                      0, 0, 0, 0,
                                      0, 0, 0, 0,
@@ -26,10 +28,10 @@ const PAPER_KEY1: [u8; KEY_BYTES] = [0x55, 0, 0, 0,
                                      0, 0, 0, 0,
                                      0, 0, 0, 0];
 
-#[cfg(test)]
+//#[cfg(test)]
 const PAPER_IV0: [u8; IV_BYTES] = [0; KEY_BYTES];
 
-#[cfg(test)]
+//#[cfg(test)]
 const PAPER_IV1: [u8; IV_BYTES] = [1, 0, 0, 0,
                                    0, 0, 0, 0,
                                    0, 0, 0, 0,
@@ -39,7 +41,7 @@ const PAPER_IV1: [u8; IV_BYTES] = [1, 0, 0, 0,
                                    0, 0, 0, 0,
                                    0, 0, 0, 0];
 
-#[cfg(test)]
+//#[cfg(test)]
 const EXPECTED_PAPER_KEY0_IV0: [u8; 64] = [
     0x5b, 0x07, 0x89, 0x85,
     0xd8, 0xf6, 0xf3, 0x0d,
@@ -59,7 +61,7 @@ const EXPECTED_PAPER_KEY0_IV0: [u8; 64] = [
     0x32, 0x7e, 0x69, 0x81
 ];
 
-#[cfg(test)]
+//#[cfg(test)]
 const EXPECTED_PAPER_KEY0_IV1: [u8; 64] = [
     0xaf, 0xe2, 0xa2, 0xbf,
     0x4f, 0x17, 0xce, 0xe9,
@@ -79,7 +81,7 @@ const EXPECTED_PAPER_KEY0_IV1: [u8; 64] = [
     0xdf, 0x0b, 0x52, 0x37
 ];
 
-#[cfg(test)]
+//#[cfg(test)]
 const EXPECTED_PAPER_KEY1_IV0: [u8; 64] = [
     0x1c, 0x40, 0x4a, 0xfe,
     0x4f, 0xe2, 0x5f, 0xed,
@@ -99,8 +101,8 @@ const EXPECTED_PAPER_KEY1_IV0: [u8; 64] = [
     0xe6, 0xdd, 0x75, 0xf5
 ];
 
-#[test]
-fn test_key0_iv0() {
+//#[test]
+pub fn test_key0_iv0() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf = [0; 64];
@@ -112,8 +114,8 @@ fn test_key0_iv0() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_1() {
+//#[test]
+pub fn test_key0_iv0_offset_1() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 1];
@@ -131,8 +133,8 @@ fn test_key0_iv0_offset_1() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_2() {
+//#[test]
+pub fn test_key0_iv0_offset_2() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 2];
@@ -150,8 +152,8 @@ fn test_key0_iv0_offset_2() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_3() {
+//#[test]
+pub fn test_key0_iv0_offset_3() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 3];
@@ -169,8 +171,8 @@ fn test_key0_iv0_offset_3() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_4() {
+//#[test]
+pub fn test_key0_iv0_offset_4() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 4];
@@ -188,8 +190,8 @@ fn test_key0_iv0_offset_4() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_5() {
+//#[test]
+pub fn test_key0_iv0_offset_5() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 5];
@@ -207,8 +209,8 @@ fn test_key0_iv0_offset_5() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_6() {
+//#[test]
+pub fn test_key0_iv0_offset_6() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 6];
@@ -226,8 +228,8 @@ fn test_key0_iv0_offset_6() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_7() {
+//#[test]
+pub fn test_key0_iv0_offset_7() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 7];
@@ -245,8 +247,8 @@ fn test_key0_iv0_offset_7() {
     }
 }
 
-#[test]
-fn test_key0_iv0_offset_8() {
+//#[test]
+pub fn test_key0_iv0_offset_8() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf1 = [0; 8];
@@ -264,8 +266,8 @@ fn test_key0_iv0_offset_8() {
     }
 }
 
-#[test]
-fn test_key1_iv0() {
+//#[test]
+pub fn test_key1_iv0() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY1),
                                 &GenericArray::from(PAPER_IV0));
     let mut buf = [0; 64];
@@ -277,8 +279,8 @@ fn test_key1_iv0() {
     }
 }
 
-#[test]
-fn test_key0_iv1() {
+//#[test]
+pub fn test_key0_iv1() {
     let mut cipher = HC256::new(&GenericArray::from(PAPER_KEY0),
                                 &GenericArray::from(PAPER_IV1));
     let mut buf = [0; 64];

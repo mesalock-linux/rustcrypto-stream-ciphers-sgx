@@ -10,12 +10,12 @@ categories = ["cryptography", "no-std"]
 readme = "README.md"
 
 [dependencies]
-byteorder = { version = "1", default-features = false }
-stream-cipher = "0.3"
+byteorder = { git = "https://github.com/mesalock-linux/byteorder-sgx" }
+stream-cipher = { git = "https://github.com/mesalock-linux/rustcrypto-traits-sgx" }
 salsa20-core = { version = "0.2", path = "../salsa20-core"}
 
 [dev-dependencies]
-stream-cipher = { version = "0.3", features = ["dev"] }
+#stream-cipher = { version = "0.3", features = ["dev"] }
 
 [features]
 default = ["xsalsa20"]

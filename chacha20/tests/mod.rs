@@ -1,8 +1,8 @@
-//! Tests for ChaCha20 (IETF and "djb" versions) as well as XChaCha20
-
-extern crate chacha20;
-#[macro_use]
-extern crate stream_cipher;
+////! Tests for ChaCha20 (IETF and "djb" versions) as well as XChaCha20
+//
+//extern crate chacha20;
+//#[macro_use]
+//extern crate stream_cipher;
 
 use chacha20::ChaCha20;
 
@@ -10,8 +10,8 @@ use chacha20::ChaCha20;
 new_sync_test!(chacha20_core, ChaCha20, "chacha20");
 new_seek_test!(chacha20_seek, ChaCha20, "chacha20");
 
-#[cfg(features = "xchacha20")]
-mod xchacha20 {
+//#[cfg(features = "xchacha20")]
+pub mod xchacha20 {
     use chacha20::XChaCha20;
     use stream_cipher::{generic_array::GenericArray, NewStreamCipher, StreamCipher};
 
@@ -103,8 +103,8 @@ mod xchacha20 {
         0x9a, 0xad, 0xc4, 0x09,
     ];
 
-    #[test]
-    fn xchacha20_keystream() {
+    //#[test]
+    pub fn xchacha20_keystream() {
         let mut cipher = XChaCha20::new(&GenericArray::from(KEY), &GenericArray::from(IV));
 
         // The test vectors omit the first 64-bytes of the keystream
@@ -116,8 +116,8 @@ mod xchacha20 {
         assert_eq!(&buf[..], &KEYSTREAM[..]);
     }
 
-    #[test]
-    fn xchacha20_encryption() {
+    //#[test]
+    pub fn xchacha20_encryption() {
         let mut cipher = XChaCha20::new(&GenericArray::from(KEY), &GenericArray::from(IV));
         let mut buf = PLAINTEXT.clone();
 
@@ -131,8 +131,8 @@ mod xchacha20 {
 }
 
 // Legacy "djb" version of ChaCha20 (64-bit nonce)
-#[cfg(feature = "legacy")]
-mod legacy {
+//#[cfg(feature = "legacy")]
+pub mod legacy {
     use chacha20::ChaCha20Legacy;
     use stream_cipher::{
         generic_array::GenericArray, NewStreamCipher, StreamCipher, SyncStreamCipherSeek,
@@ -173,9 +173,9 @@ mod legacy {
         0x86,
     ];
 
-    #[test]
-    #[ignore]
-    fn chacha20_offsets() {
+    //#[test]
+    //#[ignore]
+    pub fn chacha20_offsets() {
         for idx in 0..256 {
             for middle in idx..256 {
                 for last in middle..256 {

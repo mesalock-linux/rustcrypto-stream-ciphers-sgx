@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "stream-ciphers-sgx-test/app",
+    "stream-ciphers-sgx-test/enclave",
+]
