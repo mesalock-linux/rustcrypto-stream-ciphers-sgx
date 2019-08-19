@@ -12,12 +12,12 @@ keywords = ["crypto", "stream-cipher", "trait"]
 categories = ["cryptography", "no-std"]
 
 [dependencies]
-stream-cipher = "0.3"
-zeroize = { version = "1", optional = true, default-features = false }
+stream-cipher = { git = "https://github.com/mesalock-linux/rustcrypto-traits-sgx" }
+zeroize = { version = "1", optional = true }
 
 [dev-dependencies]
-stream-cipher = { version = "0.3", features = ["dev"] }
-block-cipher-trait = { version = "0.6", features = ["dev"] }
+#stream-cipher = { version = "0.3", features = ["dev"] }
+#block-cipher-trait = { version = "0.6", features = ["dev"] }
 
 [badges]
 travis-ci = { repository = "RustCrypto/stream-ciphers" }
